@@ -493,7 +493,7 @@ exports._EventManager = function (cache) {
 
         if (data.handlers[type].length == 1) {
             if (document.addEventListener) {
-                elem.addEventListener(type, data.dispatcher, false);
+                elem.addEventListener(type, data.dispatcher, true);
             }
             else if (document.attachEvent) {
                 elem.attachEvent("on" + type, data.dispatcher);
@@ -518,7 +518,7 @@ exports._EventManager = function (cache) {
             delete data.handlers[type];
 
             if (document.removeEventListener) {
-                elem.removeEventListener(type, data.dispatcher, false);
+                elem.removeEventListener(type, data.dispatcher, true);
             }
             else if (document.detachEvent) {
                 elem.detachEvent("on" + type, data.dispatcher);
